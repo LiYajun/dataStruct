@@ -31,8 +31,8 @@ int main(int argc, const char * argv[]) {
     {
         t = (int*) malloc(sizeof(int)*1);
         *t = i;
-       //dy_array_insert_at(ary, (object_p)t, 0);
-        dy_array_add_object(ary, t);
+       dy_array_insert_at(ary, (object_p)t, 0);
+       // dy_array_add_object(ary, t);
     }
     
     for(i=0 ; i<count; i++)
@@ -43,7 +43,7 @@ int main(int argc, const char * argv[]) {
     for(i=0 ; i<count; i++)
     {
         printf("i = %d\n",i);
-        dy_array_remove_at(ary, 0);
+        dy_array_del_at(ary, 0);
     }
  
     dy_array_dealloc(ary);

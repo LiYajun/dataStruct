@@ -22,5 +22,6 @@ typedef enum {
     YES = 1,
 }BOOL;
 
+static const  uint No_Find = (uint)-1;
 
 #endif /* GlobalTypes_h */
