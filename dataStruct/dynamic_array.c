@@ -174,7 +174,7 @@ dy_array_object_at(const dy_array_p p, uint index) {
 }
 
 /*---------------------------------------------*\
-                删除一个元素
+                移除一个对象
 \*---------------------------------------------*/
 static object_p
 _dy_array_remove_at(const dy_array_p p, uint index) {
