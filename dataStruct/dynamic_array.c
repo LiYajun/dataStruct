@@ -9,7 +9,7 @@
 #include "dynamic_array.h"
 #include "mem_allocator.h"
 
-#define  INIT_CAP    4          /*初始化的内存容量*/
+#define  INIT_CAP    128          /*初始化的内存容量*/
 
 
 
