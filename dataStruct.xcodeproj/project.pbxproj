@@ -11,6 +11,7 @@
 		E69C5B6C1CACC69C0099AEA4 /* mem_allocator.c in Sources */ = {isa = PBXBuildFile; fileRef = E69C5B6A1CACC69C0099AEA4 /* mem_allocator.c */; };
 		E6B5D5C61CA92C68009AF830 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = E6B5D5C51CA92C68009AF830 /* main.c */; };
 		E6C1FBF11CB35E4400CF3758 /* double_list.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C1FBEF1CB35E4400CF3758 /* double_list.c */; };
+		E6F9316D1CB5F45C0053BBBF /* _node.c in Sources */ = {isa = PBXBuildFile; fileRef = E6F9316B1CB5F45C0053BBBF /* _node.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		E6B5D5C51CA92C68009AF830 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		E6C1FBEF1CB35E4400CF3758 /* double_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = double_list.c; sourceTree = "<group>"; };
 		E6C1FBF01CB35E4400CF3758 /* double_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = double_list.h; sourceTree = "<group>"; };
+		E6F9316B1CB5F45C0053BBBF /* _node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = _node.c; sourceTree = "<group>"; };
+		E6F9316C1CB5F45C0053BBBF /* _node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _node.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,8 @@
 				E69C5B641CACB8ED0099AEA4 /* global_types.h */,
 				E69C5B671CACBFA40099AEA4 /* dynamic_array.c */,
 				E69C5B681CACBFA40099AEA4 /* dynamic_array.h */,
+				E6F9316B1CB5F45C0053BBBF /* _node.c */,
+				E6F9316C1CB5F45C0053BBBF /* _node.h */,
 				E6C1FBEF1CB35E4400CF3758 /* double_list.c */,
 				E6C1FBF01CB35E4400CF3758 /* double_list.h */,
 				E69C5B6A1CACC69C0099AEA4 /* mem_allocator.c */,
@@ -139,6 +144,7 @@
 				E69C5B691CACBFA40099AEA4 /* dynamic_array.c in Sources */,
 				E6B5D5C61CA92C68009AF830 /* main.c in Sources */,
 				E69C5B6C1CACC69C0099AEA4 /* mem_allocator.c in Sources */,
+				E6F9316D1CB5F45C0053BBBF /* _node.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,3 +7,11 @@
 //
 
 #include "double_list.h"
+
+
+
+
+struct _d_list
+{
+    
+};
