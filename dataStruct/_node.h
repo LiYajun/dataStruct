@@ -12,4 +12,19 @@
 #include <stdio.h>
 #include "global_types.h"
 
+/*双端结点*/
+typedef struct _d_node *  d_node_p;
+
+
+extern d_node_p
+d_node_alloc(void);
+
+extern void
+d_node_link(d_node_p pre, d_node_p next);
+
+extern void
+d_node_set_obj(d_node_p p, object_p obj);
+/*双端结点*/
+
+
 #endif /* _node_h */
