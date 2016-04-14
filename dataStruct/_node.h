@@ -24,6 +24,13 @@ d_node_link(d_node_p pre, d_node_p next);
 
 extern void
 d_node_set_obj(d_node_p p, object_p obj);
+
+
+extern d_node_p
+d_node_get_next(d_node_p p);
+
+extern d_node_p
+d_node_get_pre(d_node_p p);
 /*双端结点*/
 
 

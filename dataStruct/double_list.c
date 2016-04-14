@@ -44,19 +44,41 @@ double_list_insert_next(double_list_p p, d_node_p obj_node, object_p obj){
     assert(obj!=NULL);
     assert(obj_node!=NULL);
     
-    new_node =  d_node_alloc( );
+    new_node =  d_node_alloc( );  /*生成新的节点*/
     if(new_node == NULL){
         return NO;
     }
+    d_node_set_obj(new_node, obj); /*放置新插入的 obj*/
+    d_node_p old_next = d_node_get_next(obj_node);
     
-    d_node_set_obj( new_node, obj );
+    if(old_next!=NULL){
+        d_node_link(obj_node, new_node);
+        d_node_link(new_node, old_next);
+    }else{
+        d_node_link(obj_node, new_node);
+        p->last_node = new_node;
+    }
     
-    d_node_link(obj_node, new_node);
+    
     
     return YES;
      
 }
-
+extern BOOL
+double_list_insert_last(double_list_p p, object_p obj){
+    
+    d_node_p new_node = NULL;
+    assert(p!=NULL);
+    assert(obj!=NULL);
+   
+    new_node =  d_node_alloc( );  /*生成新的节点*/
+    if(new_node == NULL){
+        return NO;
+    }
+    d_node_set_obj(new_node, obj);
+    
+    return YES;
+}
 
 static void
 double_list_init(double_list_p p, void(*obj_free)(object_p object)) {

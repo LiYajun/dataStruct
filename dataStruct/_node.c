@@ -31,11 +31,21 @@ d_node_alloc(void){
     return p;
 }
 extern void
-d_node_link(d_node_p pre, d_node_p next){
-    assert(pre);
-    assert(next);
-    pre->next = next;
-    next->pre = pre;
+d_node_link(d_node_p p, d_node_p next){
+    assert(p!=NULL);
+    assert(next!=NULL);
+    p->next = next;
+    next->pre = p;
+}
+extern d_node_p
+d_node_get_next(d_node_p p) {
+    assert(p!= NULL);
+    return p->next;
+}
+extern d_node_p
+d_node_get_pre(d_node_p p) {
+    assert(p!=NULL);
+    return p->pre;
 }
 extern void
 d_node_set_obj(d_node_p p, object_p obj){
