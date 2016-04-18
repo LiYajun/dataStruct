@@ -47,9 +47,35 @@ d_node_get_pre(d_node_p p) {
     assert(p!=NULL);
     return p->pre;
 }
+extern object_p
+d_node_get_obj(d_node_p p) {
+    assert(p!= NULL);
+    return p->obj;
+}
 extern void
 d_node_set_obj(d_node_p p, object_p obj){
     assert(p!=NULL);
     assert(obj!=NULL);
     p->obj = obj;
 }
+
+extern object_p
+d_node_dealloc(d_node_p p) {
+    object_p obj = NULL;
+    assert(p!=NULL);
+    obj = p->obj;
+    Free(p);
+    return obj;
+}
+
+
+
+
+
+
+
+
+
+
+
+

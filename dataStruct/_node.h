@@ -31,6 +31,12 @@ d_node_get_next(d_node_p p);
 
 extern d_node_p
 d_node_get_pre(d_node_p p);
+
+extern object_p
+d_node_get_obj(d_node_p p);
+
+extern object_p
+d_node_dealloc(d_node_p p);
 /*双端结点*/
 
 

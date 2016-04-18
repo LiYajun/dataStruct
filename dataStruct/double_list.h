@@ -31,4 +31,7 @@ double_list_insert_last(double_list_p p, object_p obj);
 extern BOOL
 double_list_insert_first(double_list_p p, object_p obj);
 
+extern object_p
+double_list_pop_at(double_list_p p, d_node_p obj_node);
+
 #endif /* double_list_h */

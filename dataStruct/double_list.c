@@ -89,6 +89,9 @@ double_list_insert_pre(double_list_p p, d_node_p obj_node, object_p obj){
     return YES;
     
 }
+/*---------------------------------------------*\
+                插在尾节点之后
+\*---------------------------------------------*/
 extern BOOL
 double_list_insert_last(double_list_p p, object_p obj) {
     
@@ -111,6 +114,9 @@ double_list_insert_last(double_list_p p, object_p obj) {
      p->objs_num++;
     return YES;
 }
+/*---------------------------------------------*\
+                插在头节点之前
+\*---------------------------------------------*/
 extern BOOL
 double_list_insert_first(double_list_p p, object_p obj){
     
@@ -133,7 +139,27 @@ double_list_insert_first(double_list_p p, object_p obj){
     p->objs_num++;
     return YES;
 }
-
+/*---------------------------------------------*\
+                弹出一个元素, 调用者管理对象内存
+\*---------------------------------------------*/
+extern object_p
+double_list_pop_at(double_list_p p, d_node_p obj_node) {
+    object_p obj     = NULL;
+    d_node_p obj_pre = NULL;
+    d_node_p obj_next= NULL;
+    
+    assert(p!=NULL);
+    assert(obj_node!=NULL);
+    
+    obj_pre = d_node_get_pre(obj_node);
+    obj_next= d_node_get_next(obj_node);
+    d_node_link(obj_pre, obj_next);
+    obj =  d_node_get_obj(obj_node);
+    
+    Free(obj_node);
+    
+    return  obj;
+}
 extern void
 double_list_dealloc(double_list_p p) {
     

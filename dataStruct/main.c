@@ -45,10 +45,9 @@ int main(int argc, const char * argv[]) {
     dy_array_p ary = NULL;
     ary = dy_array_alloc( &object_free );
     
-//   tstart = times(&t1);
+ 
      start = clock();
-//    gettimeofday(&t3, NULL);
-    //t = (int*) malloc(sizeof(int)*1);
+ 
     for(i=0 ; i<count; i++)
     {
          t = (int*) malloc(sizeof(int)*1);
@@ -59,20 +58,17 @@ int main(int argc, const char * argv[]) {
     t = (int*) malloc(sizeof(int)*1);
     *t = 34;
     dy_array_insert_at(ary, t, 4);
-    
-//    gettimeofday(&t4, NULL);
-    
-//    double span = (t4.tv_sec-t3.tv_sec) + (t4.tv_usec - t3.tv_usec)/1000000.0;
-//    printf(" span = %f seconds\n", span);
-//    tend = times(&t2);
+    dy_array_del_at(ary, 7);
+ 
      end = clock();
     
-//    pr_times(tend - tstart, &t1, &t2);
+ 
      duration = (double)(end - start)  / CLOCKS_PER_SEC;
     printf("duration = %f seconds\n",duration);
     printf("%d\n", __INT_MAX__);
     
-    for(i=0 ; i<count+1; i++)
+     count = dy_array_object_count(ary);
+    for(i=0 ; i<count; i++)
     {
        int * p = dy_array_object_at(ary,  i);
         printf("object = %d\n", *p);

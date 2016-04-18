@@ -172,6 +172,24 @@ dy_array_object_at(const dy_array_p p, uint index) {
     real_index = (p->head_index+index)% p->max_cap;
     return    p->objects[real_index];
 }
+/*---------------------------------------------*\
+ 释放
+ \*---------------------------------------------*/
+extern void
+dy_array_dealloc(const dy_array_p p) {
+    assert(p!=NULL);
+    uint count;
+    uint i;
+    uint real_index;
+    count = p->objs_size;
+    for(i=0; i<count; i++) {
+        real_index = (p->head_index+i) % p->max_cap;
+        p->object_free_func( p->objects[real_index] );
+    }
+    p->object_free_func = NULL;
+    Free(p->objects);
+    Free(p);
+}
 
 /*---------------------------------------------*\
                 移除一个对象
@@ -293,24 +311,6 @@ _dy_array_backward(const dy_array_p p, uint num ,uint end) {
         p->objects[nextj] = p->objects[j];
     }
    
-}
-/*---------------------------------------------*\
-                    释放
-\*---------------------------------------------*/
-extern void
-dy_array_dealloc(const dy_array_p p) {
-    assert(p!=NULL);
-    uint count;
-    uint i;
-    uint real_index;
-    count = p->objs_size;
-    for(i=0; i<count; i++) {
-        real_index = (p->head_index+i) % p->max_cap;
-        p->object_free_func( p->objects[real_index] );
-    }
-    p->object_free_func = NULL;
-    Free(p->objects);
-    Free(p);
 }
 
 
