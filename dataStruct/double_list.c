@@ -12,9 +12,9 @@
 
 struct _double_list
 {
-    uint        objs_num;             /*所有元素个数*/
-    d_node_p  first_node;
-    d_node_p  last_node;
+    uint      objs_num;             /*所有元素个数    */
+    d_node_p  first_node;           /*第一个节点      */
+    d_node_p  last_node;            /*最后一个节点    */
     void (* obj_free_func)(object_p object);
 };
 
@@ -37,7 +37,7 @@ double_list_alloc(void(*obj_free)(object_p object)) {
 }
 
 extern BOOL
-double_list_insert_next(double_list_p p, d_node_p obj_node, object_p obj){
+double_list_insert_next(double_list_p p, d_node_p obj_node, object_p obj) {
     
     d_node_p new_node = NULL;
     assert(p!=NULL);
@@ -58,16 +58,42 @@ double_list_insert_next(double_list_p p, d_node_p obj_node, object_p obj){
         d_node_link(obj_node, new_node);
         p->last_node = new_node;
     }
-    
-    
-    
+     p->objs_num++;
     return YES;
      
 }
 extern BOOL
-double_list_insert_last(double_list_p p, object_p obj){
+double_list_insert_pre(double_list_p p, d_node_p obj_node, object_p obj){
     
     d_node_p new_node = NULL;
+    assert(p!=NULL);
+    assert(obj!=NULL);
+    assert(obj_node!=NULL);
+    
+    new_node =  d_node_alloc( );  /*生成新的节点*/
+    if(new_node == NULL){
+        return NO;
+    }
+    d_node_set_obj(new_node, obj); /*放置新插入的 obj*/
+    d_node_p old_pre = d_node_get_pre(obj_node);
+    
+    if(old_pre!=NULL){
+        d_node_link(new_node, obj_node);
+        d_node_link(old_pre,  new_node);
+    }else{
+        d_node_link(new_node, obj_node);
+        p->first_node = new_node;
+        
+    }
+    p->objs_num++;
+    return YES;
+    
+}
+extern BOOL
+double_list_insert_last(double_list_p p, object_p obj) {
+    
+    d_node_p new_node = NULL;
+    
     assert(p!=NULL);
     assert(obj!=NULL);
    
@@ -76,12 +102,44 @@ double_list_insert_last(double_list_p p, object_p obj){
         return NO;
     }
     d_node_set_obj(new_node, obj);
+    if(p->last_node == NULL) {
+        p->first_node = p->last_node = new_node;
+    }else {
+        d_node_link(p->last_node, new_node);
+        p->last_node = new_node;
+    }
+     p->objs_num++;
+    return YES;
+}
+extern BOOL
+double_list_insert_first(double_list_p p, object_p obj){
     
+    d_node_p new_node = NULL;
+    
+    assert(p!=NULL);
+    assert(obj!=NULL);
+    
+    new_node =  d_node_alloc( );  /*生成新的节点*/
+    if(new_node == NULL){
+        return NO;
+    }
+    d_node_set_obj(new_node, obj);
+    if(p->first_node == NULL) {
+        p->first_node = p->last_node = new_node;
+    }else {
+        d_node_link(new_node, p->first_node);
+        p->first_node = new_node;
+    }
+    p->objs_num++;
     return YES;
 }
 
-static void
-double_list_init(double_list_p p, void(*obj_free)(object_p object)) {
+extern void
+double_list_dealloc(double_list_p p) {
     
-    
+    assert(p!=NULL);
+    while (p->first_node!=NULL) {
+         
+    }
 }
+ 

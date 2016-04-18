@@ -35,7 +35,7 @@ static void pr_times(clock_t real, struct tms *tmsstart, struct tms *tmsend){
 }
 int main(int argc, const char * argv[]) {
     // insert code here...
-    long count = 100000;
+    long count = 10;
     int i =0;
     int *t = NULL;
     clock_t start,end, tstart, tend;
@@ -56,6 +56,10 @@ int main(int argc, const char * argv[]) {
        //dy_array_insert_at(ary, (object_p)t, 0);
         dy_array_add_object(ary, t);
     }
+    t = (int*) malloc(sizeof(int)*1);
+    *t = 34;
+    dy_array_insert_at(ary, t, 4);
+    
 //    gettimeofday(&t4, NULL);
     
 //    double span = (t4.tv_sec-t3.tv_sec) + (t4.tv_usec - t3.tv_usec)/1000000.0;
@@ -67,18 +71,14 @@ int main(int argc, const char * argv[]) {
      duration = (double)(end - start)  / CLOCKS_PER_SEC;
     printf("duration = %f seconds\n",duration);
     printf("%d\n", __INT_MAX__);
-    /*
-    for(i=0 ; i<count; i++)
+    
+    for(i=0 ; i<count+1; i++)
     {
        int * p = dy_array_object_at(ary,  i);
         printf("object = %d\n", *p);
     }
-    for(i=0 ; i<count; i++)
-    {
-        printf("i = %d\n",i);
-        dy_array_del_at(ary, 0);
-    }
- */
+ 
+ 
     dy_array_dealloc(ary);
  
 

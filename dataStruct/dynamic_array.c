@@ -38,7 +38,7 @@ struct _dy_array
     uint       objs_size;           /*现在的元素个数  */
     uint       head_index;          /*头部的索引     */
     uint       tail_index;          /*尾部的索引     */
-    object_p*   objects;            /*所有元素      */
+    object_p*   objects;            /*所有元素       */
     void (* object_free_func)(object_p object); /*释放方法*/
 };
 /*---------------------------------------------*\
@@ -276,8 +276,8 @@ static void
 _dy_array_forward(const dy_array_p p, uint num, uint start ) {
     uint i,j;
     j = start;
-    for(i = 0; i<num; i++) {
-        uint prej = _dy_array_get_preindex(p, j+i);
+    for(i = 0; i<num; i++,j++) {
+        uint prej = _dy_array_get_preindex(p, j);
         p->objects[prej] = p->objects[j];
     }
 }
@@ -288,25 +288,27 @@ static void
 _dy_array_backward(const dy_array_p p, uint num ,uint end) {
     uint i,j;
     j = end;
-    for(i = 0; i<num; i++) {
-        uint nextj = _dy_array_get_nextindex(p, j-i);
+    for(i = 0; i<num; i++, j--) {
+        uint nextj = _dy_array_get_nextindex(p, j);
         p->objects[nextj] = p->objects[j];
     }
    
 }
 /*---------------------------------------------*\
-                释放
+                    释放
 \*---------------------------------------------*/
 extern void
 dy_array_dealloc(const dy_array_p p) {
-    
-    uint count = p->objs_size;
+    assert(p!=NULL);
+    uint count;
     uint i;
     uint real_index;
+    count = p->objs_size;
     for(i=0; i<count; i++) {
         real_index = (p->head_index+i) % p->max_cap;
         p->object_free_func( p->objects[real_index] );
     }
+    p->object_free_func = NULL;
     Free(p->objects);
     Free(p);
 }
