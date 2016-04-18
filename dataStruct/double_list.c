@@ -140,7 +140,8 @@ double_list_insert_first(double_list_p p, object_p obj){
     return YES;
 }
 /*---------------------------------------------*\
-                弹出一个元素, 调用者管理对象内存
+                弹出一个元素, 
+                调用者管理对象内存
 \*---------------------------------------------*/
 extern object_p
 double_list_pop_at(double_list_p p, d_node_p obj_node) {
