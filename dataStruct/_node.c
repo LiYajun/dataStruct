@@ -61,11 +61,10 @@ d_node_set_obj(d_node_p p, object_p obj){
 
 extern object_p
 d_node_dealloc(d_node_p p) {
-    object_p obj = NULL;
+    
     assert(p!=NULL);
-    obj = p->obj;
     Free(p);
-    return obj;
+    return p->obj;
 }
 
 

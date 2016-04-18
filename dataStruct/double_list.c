@@ -154,10 +154,9 @@ double_list_pop_at(double_list_p p, d_node_p obj_node) {
     obj_pre = d_node_get_pre(obj_node);
     obj_next= d_node_get_next(obj_node);
     d_node_link(obj_pre, obj_next);
-    obj =  d_node_get_obj(obj_node);
     
-    Free(obj_node);
-    
+    obj =  d_node_dealloc(obj_node);
+    p->objs_num--;
     return  obj;
 }
 extern void
