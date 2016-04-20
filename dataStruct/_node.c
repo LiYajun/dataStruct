@@ -32,10 +32,19 @@ d_node_alloc(void){
 }
 extern void
 d_node_link(d_node_p p, d_node_p next){
-    assert(p!=NULL);
-    assert(next!=NULL);
-    p->next = next;
-    next->pre = p;
+
+    if(p==NULL && next==NULL) {
+        return;
+    }else if(p==NULL && next!=NULL){
+        next->pre = p;
+    }else if(p!=NULL && next==NULL){
+        p->next = next;
+    }else {
+        p->next = next;
+        next->pre = p;
+    }
+        
+
 }
 extern d_node_p
 d_node_get_next(d_node_p p) {

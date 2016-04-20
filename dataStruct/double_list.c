@@ -26,7 +26,7 @@ extern double_list_p
 double_list_alloc(void(*obj_free)(object_p object)) {
     
     double_list_p p = NULL;
-    assert(obj_free!=NULL);
+    assert(obj_free!= NULL);
     
     p = Malloc(sizeof(struct _double_list));
     if(p==NULL){
@@ -35,17 +35,17 @@ double_list_alloc(void(*obj_free)(object_p object)) {
     p->objs_num      = 0;
     p->first_node    = NULL;
     p->last_node     = NULL;
-    p->obj_free_func = obj_free;
+    p->obj_free_func = obj_free  ;
     
     return p;
 }
 extern d_node_p
-double_list_get_first(double_list_p p) {
+double_list_first_node(double_list_p p) {
     assert(p!=NULL);
     return p->first_node;
 }
 extern d_node_p
-double_list_get_last(double_list_p p) {
+double_list_last_node(double_list_p p) {
     assert(p!=NULL);
     return p->last_node;
 }
@@ -196,7 +196,7 @@ double_list_count(double_list_p p) {
                 调用者管理对象内存
 \*---------------------------------------------*/
 extern object_p
-double_list_pop(double_list_p p, d_node_p obj_node) {
+double_list_pop_node(double_list_p p, d_node_p obj_node) {
     object_p obj     = NULL;
     d_node_p obj_pre = NULL;
     d_node_p obj_next= NULL;
@@ -206,9 +206,11 @@ double_list_pop(double_list_p p, d_node_p obj_node) {
     
     obj_pre = d_node_get_pre(obj_node);
     obj_next= d_node_get_next(obj_node);
+    
     d_node_link(obj_pre, obj_next);
     
     obj =  d_node_dealloc(obj_node);
+    p->last_node = obj_pre;
     p->objs_num--;
     return  obj;
 }

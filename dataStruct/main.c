@@ -15,7 +15,7 @@
 #include <sys/time.h>
 #include "dynamic_array.h"
 #include "double_list.h"
-
+#include "basic_stack.h"
 
 #include <GLFW/glfw3.h>
 
@@ -53,9 +53,17 @@ int tmain(void)
     glfwTerminate();
     return 0;
 }
-void object_free(object_p ptr)
+static void object_free(object_p ptr)
 {
     free(ptr);
+}
+static BOOL object_find(object_p p)
+{
+    if(*(int*)p == 6){
+        return  YES;
+    }else{
+        return NO;
+    }
 }
 static void pr_times(clock_t real, struct tms *tmsstart, struct tms *tmsend){
     static long clktck=0;
@@ -70,20 +78,31 @@ static void pr_times(clock_t real, struct tms *tmsstart, struct tms *tmsend){
     printf("child-system-cpu:%7.2f\n", (tmsend->tms_cstime - tmsstart->tms_cstime)/(double)clktck);
 }
 
+
+void test_case1();
 void test_case2();
+void test_case3();
 
 int  main(int argc, const char * argv[]) {
     // insert code here...
-    test_case2();
+    test_case3();
     return 0;
 }
-static BOOL object_find(object_p p)
-{
-    if(*(int*)p == 6){
-        return  YES;
-    }else{
-        return NO;
+
+void test_case3(void) {
+    basic_stack_p stack = basic_stack_alloc(object_free);
+    
+    for(int i=0; i<100; i++) {
+        int * t = malloc(sizeof(int));
+        *t = i;
+        basic_stack_push(stack, t);
+        object_p obj = basic_stack_peek(stack);
+        fprintf( stdout,"%d \n", *(int*)obj );
     }
+    for(int i=0; i<100; i++) {
+        basic_stack_pop(stack);
+    }
+    basic_stack_dealloc(stack);
 }
 void test_case2(void) {
     d_node_p pos = NULL;
@@ -107,7 +126,7 @@ void test_case2(void) {
     double_list_insert_pre(list, find_node, test2);
  
     
-    for(pos = double_list_get_first(list); pos != NULL; pos = d_node_get_next(pos))
+    for(pos = double_list_first_node(list); pos != NULL; pos = d_node_get_next(pos))
     {
         object_p obj = d_node_get_obj(pos);
         printf("%d \n", *(int*)obj);

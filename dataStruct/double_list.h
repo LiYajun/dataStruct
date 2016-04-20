@@ -32,7 +32,7 @@ extern BOOL
 double_list_insert_first(double_list_p p, object_p obj);
 
 extern object_p
-double_list_pop(double_list_p p, d_node_p obj_node);
+double_list_pop_node(double_list_p p, d_node_p obj_node);
 
 extern void
 double_list_set_find_func(double_list_p p, BOOL(* obj_find_func)(object_p object) );
@@ -47,9 +47,9 @@ extern void
 double_list_dealloc(double_list_p p);
 
 extern d_node_p
-double_list_get_last(double_list_p p);
+double_list_last_node(double_list_p p);
 
 extern d_node_p
-double_list_get_first(double_list_p p);
+double_list_first_node(double_list_p p);
 
 #endif /* double_list_h */
