@@ -11,6 +11,13 @@
 		E69C5B6C1CACC69C0099AEA4 /* mem_allocator.c in Sources */ = {isa = PBXBuildFile; fileRef = E69C5B6A1CACC69C0099AEA4 /* mem_allocator.c */; };
 		E6B5D5C61CA92C68009AF830 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = E6B5D5C51CA92C68009AF830 /* main.c */; };
 		E6C1FBF11CB35E4400CF3758 /* double_list.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C1FBEF1CB35E4400CF3758 /* double_list.c */; };
+		E6C2D1CA1CC7433F00702CBC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1C91CC7433F00702CBC /* libglfw3.a */; };
+		E6C2D1CC1CC743EB00702CBC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1CB1CC743EB00702CBC /* CoreVideo.framework */; };
+		E6C2D1CE1CC743F500702CBC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1CD1CC743F500702CBC /* IOKit.framework */; };
+		E6C2D1D01CC7440000702CBC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1CF1CC7440000702CBC /* Cocoa.framework */; };
+		E6C2D1D21CC7440B00702CBC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1D11CC7440B00702CBC /* OpenGL.framework */; };
+		E6C2D1D41CC7441200702CBC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1D31CC7441200702CBC /* GLUT.framework */; };
+		E6C2D1D61CC7457E00702CBC /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1D51CC7457E00702CBC /* Carbon.framework */; };
 		E6F9316D1CB5F45C0053BBBF /* _node.c in Sources */ = {isa = PBXBuildFile; fileRef = E6F9316B1CB5F45C0053BBBF /* _node.c */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +43,13 @@
 		E6B5D5C51CA92C68009AF830 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		E6C1FBEF1CB35E4400CF3758 /* double_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = double_list.c; sourceTree = "<group>"; };
 		E6C1FBF01CB35E4400CF3758 /* double_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = double_list.h; sourceTree = "<group>"; };
+		E6C2D1C91CC7433F00702CBC /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
+		E6C2D1CB1CC743EB00702CBC /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		E6C2D1CD1CC743F500702CBC /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		E6C2D1CF1CC7440000702CBC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E6C2D1D11CC7440B00702CBC /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		E6C2D1D31CC7441200702CBC /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		E6C2D1D51CC7457E00702CBC /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		E6F9316B1CB5F45C0053BBBF /* _node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = _node.c; sourceTree = "<group>"; };
 		E6F9316C1CB5F45C0053BBBF /* _node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _node.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +59,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6C2D1D61CC7457E00702CBC /* Carbon.framework in Frameworks */,
+				E6C2D1D41CC7441200702CBC /* GLUT.framework in Frameworks */,
+				E6C2D1D21CC7440B00702CBC /* OpenGL.framework in Frameworks */,
+				E6C2D1D01CC7440000702CBC /* Cocoa.framework in Frameworks */,
+				E6C2D1CE1CC743F500702CBC /* IOKit.framework in Frameworks */,
+				E6C2D1CC1CC743EB00702CBC /* CoreVideo.framework in Frameworks */,
+				E6C2D1CA1CC7433F00702CBC /* libglfw3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +75,13 @@
 		E6B5D5B91CA92C68009AF830 = {
 			isa = PBXGroup;
 			children = (
+				E6C2D1D51CC7457E00702CBC /* Carbon.framework */,
+				E6C2D1D31CC7441200702CBC /* GLUT.framework */,
+				E6C2D1D11CC7440B00702CBC /* OpenGL.framework */,
+				E6C2D1CF1CC7440000702CBC /* Cocoa.framework */,
+				E6C2D1CD1CC743F500702CBC /* IOKit.framework */,
+				E6C2D1CB1CC743EB00702CBC /* CoreVideo.framework */,
+				E6C2D1C91CC7433F00702CBC /* libglfw3.a */,
 				E6B5D5C41CA92C68009AF830 /* dataStruct */,
 				E6B5D5C31CA92C68009AF830 /* Products */,
 			);
@@ -233,6 +261,8 @@
 		E6B5D5CA1CA92C68009AF830 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -240,6 +270,8 @@
 		E6B5D5CB1CA92C68009AF830 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
