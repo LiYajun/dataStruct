@@ -89,6 +89,8 @@ int  main(int argc, const char * argv[]) {
     return 0;
 }
 
+
+
 void test_case3(void) {
     basic_stack_p stack = basic_stack_alloc(object_free);
     
@@ -104,6 +106,7 @@ void test_case3(void) {
     }
     basic_stack_dealloc(stack);
 }
+
 void test_case2(void) {
     d_node_p pos = NULL;
   double_list_p list =  double_list_alloc(object_free);
@@ -143,10 +146,9 @@ void test_case1(void) {
     long count = 10;
     int i =0;
     int *t = NULL;
-    clock_t start,end, tstart, tend;
+    clock_t start,end;
     double duration;
-    struct tms t1, t2;
-    struct timeval t3, t4;
+ 
     dy_array_p ary = NULL;
     ary = dy_array_alloc( &object_free );
     
