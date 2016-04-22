@@ -85,14 +85,25 @@ void test_case3();
 
 int  main(int argc, const char * argv[]) {
     // insert code here...
-    test_case3();
+    //test_case2();
+    int i;
+    int count =0;
+    for(i=1; i<=10000; i++) {
+        if(i%2==0 || i%3==0) {
+            count++;
+            if(count == 2333) {
+                printf("%d",i);
+            }
+        }
+    }
     return 0;
 }
 
 
 
+
 void test_case3(void) {
-    basic_stack_p stack = basic_stack_alloc(object_free);
+    basic_stack_p stack = basic_stack_alloc(&object_free);
     
     for(int i=0; i<100; i++) {
         int * t = malloc(sizeof(int));
@@ -108,17 +119,27 @@ void test_case3(void) {
 }
 
 void test_case2(void) {
+    
+    clock_t start,end;
+    double duration;
+    long count = 1000000;
     d_node_p pos = NULL;
-  double_list_p list =  double_list_alloc(object_free);
-    for(int i=0; i<10; i++)
+    double_list_p list =  double_list_alloc(object_free);
+    
+    start = clock();
+    for(int i=0; i<count; i++)
     {
         int * t = malloc(sizeof(int));
-        int * m = malloc(sizeof(int));
+        //int * m = malloc(sizeof(int));
         *t = i;
-        *m = i+100;
+        //*m = i+10000;
         double_list_insert_last(list, t);
-        double_list_insert_first(list, m);
+        //double_list_insert_first(list, m);
     }
+    end = clock();
+    duration = (double)(end - start)  / CLOCKS_PER_SEC;
+    printf("duration = %f seconds\n",duration);
+    
     
     d_node_p find_node = double_list_find(list, &object_find);
     int * test = malloc(sizeof(int));
