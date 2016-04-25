@@ -16,7 +16,7 @@
 #include "dynamic_array.h"
 #include "double_list.h"
 #include "basic_stack.h"
-
+#include "big_number.h"
 #include <GLFW/glfw3.h>
 
 int tmain(void)
@@ -86,6 +86,7 @@ void test_case3();
 int  main(int argc, const char * argv[]) {
     // insert code here...
     //test_case2();
+    /*
     int i;
     int count =0;
     for(i=1; i<=10000; i++) {
@@ -96,6 +97,30 @@ int  main(int argc, const char * argv[]) {
             }
         }
     }
+     */
+ 
+    
+    big_number_p big_number1 = big_number_alloc(100);
+    big_number_p big_number2 = big_number_alloc(100);
+    
+    big_number_set_num(big_number1,   "2314");
+    big_number_set_num(big_number2,   "3123");
+   
+    
+    
+    char* str1 = big_number_value(big_number1);
+    char* str2 = big_number_value(big_number2);
+     printf("input number:\n%s\n%s\n", str1, str2);
+    
+    big_number_minus_other(big_number2, big_number1);
+    str2 = big_number_value(big_number2);
+    printf("%s\n", str2);
+  
+   // big_number_add_other(big_number1, big_number2);
+    
+   // char* str = big_number_value(big_number1);
+   // printf("%s\n", str);
+    
     return 0;
 }
 

@@ -11,6 +11,7 @@
 
 typedef void *              object_p;
 typedef unsigned char       uint8;
+typedef char                int8;
 typedef unsigned short      ushort;
 typedef signed short        sshort;
 typedef unsigned int        uint;
