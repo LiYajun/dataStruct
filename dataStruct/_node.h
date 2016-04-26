@@ -12,8 +12,10 @@
 #include <stdio.h>
 #include "global_types.h"
 
+/*树结点*/
+typedef struct _tree_node* tree_node_p;
 /*双端结点*/
-typedef struct _d_node *  d_node_p;
+typedef struct _d_node*    d_node_p;
 
 
 extern d_node_p

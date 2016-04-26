@@ -8,6 +8,15 @@
 #include <assert.h>
 #include "_node.h"
 #include "mem_allocator.h"
+
+#include "dynamic_array.h"
+/*树的结点*/
+struct _tree_node
+{
+    dy_array_p sub_nodes;
+    object_p   data;
+};
+
 /*双端链表节点*/
 struct _d_node
 {
