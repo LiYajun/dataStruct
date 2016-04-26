@@ -210,7 +210,10 @@ double_list_pop_node(double_list_p p, d_node_p obj_node) {
     d_node_link(obj_pre, obj_next);
     
     obj =  d_node_dealloc(obj_node);
-    p->last_node = obj_pre;
+    if(obj_node == p->last_node)
+       p->last_node = obj_pre;
+    if(obj_node == p->first_node)
+        p->first_node = obj_next;
     p->objs_num--;
     return  obj;
 }

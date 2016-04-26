@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6458D3D1CCF4296006B5231 /* basic_queue.c in Sources */ = {isa = PBXBuildFile; fileRef = E6458D3B1CCF4296006B5231 /* basic_queue.c */; };
 		E69C5B691CACBFA40099AEA4 /* dynamic_array.c in Sources */ = {isa = PBXBuildFile; fileRef = E69C5B671CACBFA40099AEA4 /* dynamic_array.c */; };
 		E69C5B6C1CACC69C0099AEA4 /* mem_allocator.c in Sources */ = {isa = PBXBuildFile; fileRef = E69C5B6A1CACC69C0099AEA4 /* mem_allocator.c */; };
 		E6AB14D01CC9F8830069C28E /* big_number.c in Sources */ = {isa = PBXBuildFile; fileRef = E6AB14CE1CC9F8830069C28E /* big_number.c */; };
@@ -36,6 +37,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E6458D3B1CCF4296006B5231 /* basic_queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = basic_queue.c; sourceTree = "<group>"; };
+		E6458D3C1CCF4296006B5231 /* basic_queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basic_queue.h; sourceTree = "<group>"; };
 		E69C5B641CACB8ED0099AEA4 /* global_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = global_types.h; sourceTree = "<group>"; };
 		E69C5B671CACBFA40099AEA4 /* dynamic_array.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dynamic_array.c; sourceTree = "<group>"; };
 		E69C5B681CACBFA40099AEA4 /* dynamic_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dynamic_array.h; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 				E6C1FBF01CB35E4400CF3758 /* double_list.h */,
 				E6C2D1D71CC7732C00702CBC /* basic_stack.c */,
 				E6C2D1D81CC7732C00702CBC /* basic_stack.h */,
+				E6458D3B1CCF4296006B5231 /* basic_queue.c */,
+				E6458D3C1CCF4296006B5231 /* basic_queue.h */,
 				E69C5B6A1CACC69C0099AEA4 /* mem_allocator.c */,
 				E69C5B6B1CACC69C0099AEA4 /* mem_allocator.h */,
 			);
@@ -182,6 +187,7 @@
 				E6C1FBF11CB35E4400CF3758 /* double_list.c in Sources */,
 				E69C5B691CACBFA40099AEA4 /* dynamic_array.c in Sources */,
 				E6B5D5C61CA92C68009AF830 /* main.c in Sources */,
+				E6458D3D1CCF4296006B5231 /* basic_queue.c in Sources */,
 				E6C2D1D91CC7732C00702CBC /* basic_stack.c in Sources */,
 				E69C5B6C1CACC69C0099AEA4 /* mem_allocator.c in Sources */,
 				E6F9316D1CB5F45C0053BBBF /* _node.c in Sources */,

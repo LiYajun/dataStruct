@@ -17,6 +17,8 @@
 #include "double_list.h"
 #include "basic_stack.h"
 #include "big_number.h"
+#include "basic_queue.h"
+
 #include <GLFW/glfw3.h>
 
 int tmain(void)
@@ -85,21 +87,9 @@ void test_case3();
 
 int  main(int argc, const char * argv[]) {
     // insert code here...
-    //test_case2();
-    /*
-    int i;
-    int count =0;
-    for(i=1; i<=10000; i++) {
-        if(i%2==0 || i%3==0) {
-            count++;
-            if(count == 2333) {
-                printf("%d",i);
-            }
-        }
-    }
-     */
+
  
-    
+    /*
     big_number_p big_number1 = big_number_alloc(100);
     big_number_p big_number2 = big_number_alloc(100);
     
@@ -115,11 +105,21 @@ int  main(int argc, const char * argv[]) {
     big_number_minus_other(big_number1, big_number2);
     str2 = big_number_value(big_number1);
     printf("output number:\n%s\n", str2);
-  
-   // big_number_add_other(big_number1, big_number2);
+   */
+ 
+    basic_queue_p que = basic_que_alloc(object_free);
     
-   // char* str = big_number_value(big_number1);
-   // printf("%s\n", str);
+    for (int i=0; i<100; i++) {
+        int* t = malloc(sizeof(int));
+        *t = i;
+        basic_que_enque(que, t);
+
+    }
+    for(int i=0; i<100; i++){
+        int* t = (int*) basic_que_deque(que);
+        printf("%d\n",*t);
+    }
+    
     
     return 0;
 }

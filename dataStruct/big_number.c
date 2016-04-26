@@ -255,11 +255,9 @@ _big_number_minus_other(big_number_p this, big_number_p other_num){
         min_pos =  this->cur_count;
     }
     else{
-        
         max_pos = this->cur_count;
         min_pos = this->cur_count;
         sign = result_sign;
-        
     }
    
     if(sign == 1){
