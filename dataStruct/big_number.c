@@ -12,8 +12,13 @@
 
 #include "big_number.h"
 #include "mem_allocator.h"
-
+#include <string.h>
 #define Default_Count 100
+
+typedef enum{
+    sign_minus = -1,
+    sign_plus  =  1,
+}num_sign;
 
 struct _big_number{
     uint8 * data;
@@ -31,7 +36,11 @@ _big_number_add_other(big_number_p this, big_number_p other_num);
 static BOOL
 _big_number_minus_other(big_number_p this, big_number_p other_num);
 
+static int8
+_big_number_result_sign(big_number_p number1, big_number_p number2, char oper);
 
+static void
+_big_number_clear_zero(const big_number_p this);
 
 extern big_number_p
 big_number_alloc(uint length) {
@@ -105,23 +114,22 @@ big_number_value(big_number_p this) {
     {
         str = Calloc(this->cur_count+1, sizeof(int8));
         m = 0;
-    }
-    else
+    }else
     {
         str = Calloc(this->cur_count+2, sizeof(int8));
         str[0] = '-';
         m = 1;
     }
-    
-    for (i=this->cur_count-1,j=m; i>=0; i--,j++) {
+
+    for(i=this->cur_count-1,j=m; i>=0; i--,j++) {
         
         str[j] = this->data[i]+'0';
     }
-    
     return str;
 }
 extern BOOL
 big_number_add_other(big_number_p this, big_number_p other_num){
+    
     assert(this!=NULL);
     assert(other_num!=NULL);
     
@@ -129,13 +137,15 @@ big_number_add_other(big_number_p this, big_number_p other_num){
        (this->sign ==-1 &&  other_num->sign ==-1))
     {
         _big_number_add_other(this, other_num);
-        
+         
     }
     else if((this->sign == 1 && other_num->sign == -1)||
             (this->sign ==-1 && other_num->sign == 1))
     {
         _big_number_minus_other(this, other_num);
+        
     }
+    _big_number_clear_zero(this);
     return YES;
 }
 extern BOOL
@@ -147,32 +157,34 @@ big_number_minus_other(big_number_p this, big_number_p other_num){
        (this->sign ==-1 &&  other_num->sign ==  1))
     {
         _big_number_add_other(this, other_num);
+        
     }
     else if((this->sign == 1 && other_num->sign == 1)||
             (this->sign ==-1 && other_num->sign == -1))
     {
         _big_number_minus_other(this, other_num);
+        
     }
+    _big_number_clear_zero(this);
     return YES;
 }
 
 static BOOL
 _big_number_add_other(big_number_p this, big_number_p other_num){
     
-    
     uint    i;
-    uint    pos = 0;
-    uint8   top = 0;
-    uint8   num = 0;
+    uint    length  = 0;
+    uint8   top     = 0;/*进位*/
+    uint8   num     = 0;
     
-    pos = this->cur_count > other_num->cur_count ? this->cur_count:other_num->cur_count;
-    
-    if(this->max_count <= pos){
+    length = this->cur_count > other_num->cur_count ? this->cur_count:other_num->cur_count;
+/*
+    if(this->max_count <= length){
         if( _big_number_recap( this ) == NO )
             return NO;
     }
-    
-    for(i=0; i< pos; i++) {
+*/
+    for(i=0; i< length; i++) {
         num =  this->data[i]+other_num->data[i] +top  ;
         this->data[i] = num % 10 ;
         top = num / 10;
@@ -183,7 +195,7 @@ _big_number_add_other(big_number_p this, big_number_p other_num){
         this->data[i]   = top;
         this->cur_count = i;
     }else{
-        this->cur_count = pos;
+        this->cur_count = length;
     }
     
     return YES;
@@ -191,6 +203,7 @@ _big_number_add_other(big_number_p this, big_number_p other_num){
 
 static BOOL
 _big_number_minus_other(big_number_p this, big_number_p other_num){
+    
     sint i;
     uint max_pos = 0;
     uint min_pos = 0;
@@ -199,7 +212,38 @@ _big_number_minus_other(big_number_p this, big_number_p other_num){
     int8 sign = 1;
     uint8 * this_data = NULL;
     uint8 * other_data= NULL;
- 
+    int8 result_sign = 1;
+    if(this->sign == 1 &&  other_num->sign == -1)
+    {
+        result_sign = 1;
+    }else if(this->sign == -1 &&  other_num->sign == 1)
+    {
+        result_sign = -1;
+    }else
+    {
+        /*判断 正 负 号*/
+        if(this->cur_count < other_num->cur_count){
+            result_sign = -other_num->sign;
+        }else if(this->cur_count > other_num->cur_count){
+            result_sign = this->sign;
+        }else{
+            for(i=this->cur_count-1; i>=0; i--){
+                
+                if(this->data[i]>other_num->data[i]){
+                    result_sign=  1;
+                    break;
+                }else if(this->data[i] < other_num->data[i]){
+                    result_sign= -1;
+                    break;
+                }else{
+                    result_sign = 0;
+                    continue;
+                }
+            }
+            
+        }
+    }
+    
     if(this->cur_count > other_num->cur_count){
         sign    = 1;
         max_pos = this->cur_count;
@@ -214,32 +258,26 @@ _big_number_minus_other(big_number_p this, big_number_p other_num){
         
         max_pos = this->cur_count;
         min_pos = this->cur_count;
-        for(i=this->cur_count-1; i>=0; i--){
-            if(this->data[i]>other_num->data[i]){
-                sign =  1;
-                break;
-            }else if(this->data[i] < other_num->data[i] ){
-                sign = -1;
-                break;
-            }else{
-                continue;
-            }
-        }
+        sign = result_sign;
         
     }
    
     if(sign == 1){
         this_data  = this->data;
         other_data = other_num->data;
-    }else {
+    }else if(sign == -1){
         this_data  = other_num->data;
         other_data = this->data;
+    }else{
+        memset(this->data, 0, sizeof(uint8));
+        this->cur_count = max_pos;
+        return YES;
     }
     if(this->max_count <= max_pos){
         if( _big_number_recap( this ) == NO )
             return NO;
     }
-    for (i=0; i< min_pos; i++) {
+    for(i=0; i< min_pos; i++){
         num = this_data[i] - other_data[i] + top;
         if(num<0){
             num = num+10;
@@ -250,6 +288,7 @@ _big_number_minus_other(big_number_p this, big_number_p other_num){
             top =  0;
         }
     }
+    
     for(i=min_pos; i<max_pos; i++){
         num = this_data[i] + top;
         if(num<0){
@@ -261,23 +300,14 @@ _big_number_minus_other(big_number_p this, big_number_p other_num){
             top =  0;
         }
     }
-    
     this->cur_count = max_pos;
-    this->sign = sign;
-    
-    
+    this->sign = result_sign;
     return YES;
-    
 }
-/**
- *  @brief <#Description#>
- *
- *  @param number1 <#number1 description#>
- *  @param number2 <#number2 description#>
- *  @param oper    <#oper description#>
- *
- *  @return 1 表示结果为正，－1表示结果为负，0表示结果为0
- */
+
+
+
+
 static int8
 _big_number_result_sign(big_number_p number1, big_number_p number2, char oper){
     sint i;
@@ -318,12 +348,10 @@ _big_number_result_sign(big_number_p number1, big_number_p number2, char oper){
         if(number1->sign == 1 &&  number2->sign == -1)
         {
             return 1;
-        }
-        else if(number1->sign == -1 &&  number2->sign == 1)
+        }else if(number1->sign == -1 &&  number2->sign == 1)
         {
             return -1;
-        }
-        else /*if((number1->sign== 1 && number2->sign == 1) ||
+        }else /*if((number1->sign== 1 && number2->sign == 1) ||
                 (number1->sign==-1 && number2->sign ==-1))*/
         {
             /*判断 正 负 号*/
@@ -368,7 +396,19 @@ _big_number_recap(const big_number_p this ) {
     return YES;
 }
 
-
+static void
+_big_number_clear_zero(const big_number_p this){
+    
+    uint length = this->cur_count;
+    sint i;
+    for(i=length-1; i>=0; i--){
+        if(this->data[i]!=0){
+            break;
+        }else{
+            this->cur_count--;
+        }
+    }
+}
 
 
 

@@ -103,8 +103,8 @@ int  main(int argc, const char * argv[]) {
     big_number_p big_number1 = big_number_alloc(100);
     big_number_p big_number2 = big_number_alloc(100);
     
-    big_number_set_num(big_number1,   "2314");
-    big_number_set_num(big_number2,   "3123");
+    big_number_set_num(big_number1,          "78952125232");
+    big_number_set_num(big_number2,          "-222225241");
    
     
     
@@ -112,9 +112,9 @@ int  main(int argc, const char * argv[]) {
     char* str2 = big_number_value(big_number2);
      printf("input number:\n%s\n%s\n", str1, str2);
     
-    big_number_minus_other(big_number2, big_number1);
-    str2 = big_number_value(big_number2);
-    printf("%s\n", str2);
+    big_number_minus_other(big_number1, big_number2);
+    str2 = big_number_value(big_number1);
+    printf("output number:\n%s\n", str2);
   
    // big_number_add_other(big_number1, big_number2);
     
