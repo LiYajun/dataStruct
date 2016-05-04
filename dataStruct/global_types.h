@@ -24,6 +24,12 @@ typedef enum {
     YES = 1,
 }BOOL;
 
+typedef enum {
+    none =  0,
+    same =  1,
+    big  =  2,
+    small = 3,
+}obj_order;
 static const  uint No_Find = (uint)-1;
 
 #endif /* GlobalTypes_h */

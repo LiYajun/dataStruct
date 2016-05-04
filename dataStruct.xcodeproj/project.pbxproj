@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		E6458D3D1CCF4296006B5231 /* basic_queue.c in Sources */ = {isa = PBXBuildFile; fileRef = E6458D3B1CCF4296006B5231 /* basic_queue.c */; };
+		E6601E021CD837A4006DF3EF /* binary_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = E6601E001CD837A4006DF3EF /* binary_tree.c */; };
 		E69C5B691CACBFA40099AEA4 /* dynamic_array.c in Sources */ = {isa = PBXBuildFile; fileRef = E69C5B671CACBFA40099AEA4 /* dynamic_array.c */; };
 		E69C5B6C1CACC69C0099AEA4 /* mem_allocator.c in Sources */ = {isa = PBXBuildFile; fileRef = E69C5B6A1CACC69C0099AEA4 /* mem_allocator.c */; };
 		E6AB14D01CC9F8830069C28E /* big_number.c in Sources */ = {isa = PBXBuildFile; fileRef = E6AB14CE1CC9F8830069C28E /* big_number.c */; };
 		E6B5D5C61CA92C68009AF830 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = E6B5D5C51CA92C68009AF830 /* main.c */; };
+		E6B94E361CD9F9B2007A16DB /* avl_btree.c in Sources */ = {isa = PBXBuildFile; fileRef = E6B94E341CD9F9B2007A16DB /* avl_btree.c */; };
 		E6C1FBF11CB35E4400CF3758 /* double_list.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C1FBEF1CB35E4400CF3758 /* double_list.c */; };
 		E6C2D1CA1CC7433F00702CBC /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1C91CC7433F00702CBC /* libglfw3.a */; };
 		E6C2D1CC1CC743EB00702CBC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1CB1CC743EB00702CBC /* CoreVideo.framework */; };
@@ -39,6 +41,8 @@
 /* Begin PBXFileReference section */
 		E6458D3B1CCF4296006B5231 /* basic_queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = basic_queue.c; sourceTree = "<group>"; };
 		E6458D3C1CCF4296006B5231 /* basic_queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basic_queue.h; sourceTree = "<group>"; };
+		E6601E001CD837A4006DF3EF /* binary_tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = binary_tree.c; sourceTree = "<group>"; };
+		E6601E011CD837A4006DF3EF /* binary_tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary_tree.h; sourceTree = "<group>"; };
 		E69C5B641CACB8ED0099AEA4 /* global_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = global_types.h; sourceTree = "<group>"; };
 		E69C5B671CACBFA40099AEA4 /* dynamic_array.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dynamic_array.c; sourceTree = "<group>"; };
 		E69C5B681CACBFA40099AEA4 /* dynamic_array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dynamic_array.h; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 		E6AB14CF1CC9F8830069C28E /* big_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = big_number.h; sourceTree = "<group>"; };
 		E6B5D5C21CA92C68009AF830 /* dataStruct */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dataStruct; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B5D5C51CA92C68009AF830 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		E6B94E341CD9F9B2007A16DB /* avl_btree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = avl_btree.c; sourceTree = "<group>"; };
+		E6B94E351CD9F9B2007A16DB /* avl_btree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avl_btree.h; sourceTree = "<group>"; };
 		E6C1FBEF1CB35E4400CF3758 /* double_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = double_list.c; sourceTree = "<group>"; };
 		E6C1FBF01CB35E4400CF3758 /* double_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = double_list.h; sourceTree = "<group>"; };
 		E6C2D1C91CC7433F00702CBC /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
@@ -108,6 +114,10 @@
 			isa = PBXGroup;
 			children = (
 				E6B5D5C51CA92C68009AF830 /* main.c */,
+				E6B94E341CD9F9B2007A16DB /* avl_btree.c */,
+				E6B94E351CD9F9B2007A16DB /* avl_btree.h */,
+				E6601E001CD837A4006DF3EF /* binary_tree.c */,
+				E6601E011CD837A4006DF3EF /* binary_tree.h */,
 				E6AB14CE1CC9F8830069C28E /* big_number.c */,
 				E6AB14CF1CC9F8830069C28E /* big_number.h */,
 				E69C5B641CACB8ED0099AEA4 /* global_types.h */,
@@ -185,7 +195,9 @@
 			files = (
 				E6AB14D01CC9F8830069C28E /* big_number.c in Sources */,
 				E6C1FBF11CB35E4400CF3758 /* double_list.c in Sources */,
+				E6601E021CD837A4006DF3EF /* binary_tree.c in Sources */,
 				E69C5B691CACBFA40099AEA4 /* dynamic_array.c in Sources */,
+				E6B94E361CD9F9B2007A16DB /* avl_btree.c in Sources */,
 				E6B5D5C61CA92C68009AF830 /* main.c in Sources */,
 				E6458D3D1CCF4296006B5231 /* basic_queue.c in Sources */,
 				E6C2D1D91CC7732C00702CBC /* basic_stack.c in Sources */,

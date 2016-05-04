@@ -10,12 +10,33 @@
 #include "mem_allocator.h"
 
 #include "dynamic_array.h"
-/*树的结点*/
-struct _tree_node
-{
-    dy_array_p sub_nodes;
-    object_p   data;
-};
+ 
+
+
+extern object_p
+btree_node_get_obj(btree_node_p p) {
+    if (p==NULL) {
+        return NULL;
+    }
+    return p->data;
+}
+
+extern btree_node_p
+btree_node_get_left(btree_node_p p) {
+    if (p==NULL) {
+        return NULL;
+    }
+    return p->left;
+}
+
+extern btree_node_p
+btree_node_get_right(btree_node_p p) {
+    if (p==NULL) {
+        return NULL;
+    }
+    return p->right;
+}
+
 
 /*双端链表节点*/
 struct _d_node
