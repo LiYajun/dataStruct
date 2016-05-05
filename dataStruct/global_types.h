@@ -18,7 +18,7 @@ typedef unsigned int        uint;
 typedef int                 sint;
 typedef unsigned long       ulong;
 typedef signed   long       slong;
-
+typedef int                 ElementType;
 typedef enum {
     NO  = 0,
     YES = 1,
