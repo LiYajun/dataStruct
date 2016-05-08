@@ -18,18 +18,20 @@
 #include "basic_stack.h"
 #include "big_number.h"
 #include "basic_queue.h"
+#include "splay_tree.h"
 
+/*
 #include <GLFW/glfw3.h>
 
 int tmain(void)
 {
     GLFWwindow* window;
     
-    /* Initialize the library */
+    // Initialize the library
     if (!glfwInit())
         return -1;
     
-    /* Create a windowed mode window and its OpenGL context */
+    // Create a windowed mode window and its OpenGL context
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window)
     {
@@ -37,24 +39,27 @@ int tmain(void)
         return -1;
     }
     
-    /* Make the window's context current */
+    // Make the window's context current
     glfwMakeContextCurrent(window);
     
-    /* Loop until the user closes the window */
+    // Loop until the user closes the window
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
+        // Render here
         
-        /* Swap front and back buffers */
+        // Swap front and back buffers
         glfwSwapBuffers(window);
         
-        /* Poll for and process events */
+        // Poll for and process events
         glfwPollEvents();
     }
     
     glfwTerminate();
     return 0;
 }
+*/
+#include "avl_btree.h"
+
 static void object_free(object_p ptr)
 {
     free(ptr);
@@ -67,65 +72,52 @@ static BOOL object_find(object_p p)
         return NO;
     }
 }
-static void pr_times(clock_t real, struct tms *tmsstart, struct tms *tmsend){
-    static long clktck=0;
-    if(0 == clktck)
-        if((clktck=sysconf(_SC_CLK_TCK))<0)
-            puts("sysconf err");
-    
-    printf("real:%7.2f\n", real/(double)clktck);
-    printf("user-cpu:%7.2f\n", (tmsend->tms_utime - tmsstart->tms_utime)/(double)clktck);
-    printf("system-cpu:%7.2f\n", (tmsend->tms_stime - tmsstart->tms_stime)/(double)clktck);
-    printf("child-user-cpu:%7.2f\n", (tmsend->tms_cutime - tmsstart->tms_cutime)/(double)clktck);
-    printf("child-system-cpu:%7.2f\n", (tmsend->tms_cstime - tmsstart->tms_cstime)/(double)clktck);
-}
-
 
 void test_case1();
 void test_case2();
 void test_case3();
+void test_case4();
+void test_case5();
 
 int  main(int argc, const char * argv[]) {
     // insert code here...
-
- 
-    /*
-    big_number_p big_number1 = big_number_alloc(100);
-    big_number_p big_number2 = big_number_alloc(100);
-    
-    big_number_set_num(big_number1,          "78952125232");
-    big_number_set_num(big_number2,          "-222225241");
-   
-    
-    
-    char* str1 = big_number_value(big_number1);
-    char* str2 = big_number_value(big_number2);
-     printf("input number:\n%s\n%s\n", str1, str2);
-    
-    big_number_minus_other(big_number1, big_number2);
-    str2 = big_number_value(big_number1);
-    printf("output number:\n%s\n", str2);
-   */
- 
-    basic_queue_p que = basic_que_alloc(object_free);
-    
-    for (int i=0; i<100; i++) {
-        int* t = malloc(sizeof(int));
-        *t = i;
-        basic_que_enque(que, t);
-
-    }
-    for(int i=0; i<100; i++){
-        int* t = (int*) basic_que_deque(que);
-        printf("%d\n",*t);
-    }
-    
-    
+    test_case5();
     return 0;
 }
 
+void test_case5(void) {
+    
+    TREE tr;
+    tr = NULL;
+    tr = insert_value(tr, 6);
+    tr = insert_value(tr, 5);
+    tr = insert_value(tr, 4);
+    tr = insert_value(tr, 3);
+    tr = insert_value(tr, 1);
+    tr = insert_value(tr, 2);
+    
+    tr = find_value(tr, 2);
+    
+    printf("%d\n", tr->rchild->lchild->element);
 
+}
 
+void test_case4(void) {
+    
+    AvlTree root = NULL;
+    long count = 1000000;
+    clock_t start,end;
+    double duration;
+    
+    start = clock();
+    for (int i= 0; i<count; i++) {
+        root = Insert(i, root);
+    }
+    end = clock();
+    duration = (double)(end - start)  / CLOCKS_PER_SEC;
+    printf("duration = %f seconds\n",duration);
+    
+}
 
 void test_case3(void) {
     basic_stack_p stack = basic_stack_alloc(&object_free);

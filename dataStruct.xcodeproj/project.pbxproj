@@ -23,6 +23,7 @@
 		E6C2D1D41CC7441200702CBC /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1D31CC7441200702CBC /* GLUT.framework */; };
 		E6C2D1D61CC7457E00702CBC /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C2D1D51CC7457E00702CBC /* Carbon.framework */; };
 		E6C2D1D91CC7732C00702CBC /* basic_stack.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C2D1D71CC7732C00702CBC /* basic_stack.c */; };
+		E6C5AB611CDC8DF900BC5AC5 /* splay_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C5AB5F1CDC8DF900BC5AC5 /* splay_tree.c */; };
 		E6F9316D1CB5F45C0053BBBF /* _node.c in Sources */ = {isa = PBXBuildFile; fileRef = E6F9316B1CB5F45C0053BBBF /* _node.c */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,8 @@
 		E6C2D1D51CC7457E00702CBC /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		E6C2D1D71CC7732C00702CBC /* basic_stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = basic_stack.c; sourceTree = "<group>"; };
 		E6C2D1D81CC7732C00702CBC /* basic_stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basic_stack.h; sourceTree = "<group>"; };
+		E6C5AB5F1CDC8DF900BC5AC5 /* splay_tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = splay_tree.c; sourceTree = "<group>"; };
+		E6C5AB601CDC8DF900BC5AC5 /* splay_tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = splay_tree.h; sourceTree = "<group>"; };
 		E6F9316B1CB5F45C0053BBBF /* _node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = _node.c; sourceTree = "<group>"; };
 		E6F9316C1CB5F45C0053BBBF /* _node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _node.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				E6B5D5C51CA92C68009AF830 /* main.c */,
+				E6C5AB5F1CDC8DF900BC5AC5 /* splay_tree.c */,
+				E6C5AB601CDC8DF900BC5AC5 /* splay_tree.h */,
 				E6B94E341CD9F9B2007A16DB /* avl_btree.c */,
 				E6B94E351CD9F9B2007A16DB /* avl_btree.h */,
 				E6601E001CD837A4006DF3EF /* binary_tree.c */,
@@ -203,6 +208,7 @@
 				E6C2D1D91CC7732C00702CBC /* basic_stack.c in Sources */,
 				E69C5B6C1CACC69C0099AEA4 /* mem_allocator.c in Sources */,
 				E6F9316D1CB5F45C0053BBBF /* _node.c in Sources */,
+				E6C5AB611CDC8DF900BC5AC5 /* splay_tree.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

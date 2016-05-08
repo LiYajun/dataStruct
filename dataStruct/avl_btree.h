@@ -17,7 +17,8 @@ typedef  struct AvlNode* Position;
 typedef  struct AvlNode* AvlTree;
 
 
-
+AvlTree
+Insert( ElementType X, AvlTree T);
 
 
 #endif /* avl_btree_h */

@@ -33,7 +33,7 @@ DoubleRotateWithRight(AvlTree T);
 
 static int
 Max(int a, int b);
-
+/*插入一个数值*/
 AvlTree
 Insert( ElementType X, AvlTree T)
 {
@@ -42,7 +42,8 @@ Insert( ElementType X, AvlTree T)
         if(T == NULL)
             fprintf(stdout, "malloc failed");
         else {
-            T->Element = X; T->Height = 0;
+            T->Element = X;
+            T->Height = 0;
             T->Left = T->Right = NULL;
         }
         
@@ -68,10 +69,10 @@ Insert( ElementType X, AvlTree T)
                 T = DoubleRotateWithRight(T);
         }
     }
-    T->Height = Max(Height(T->Left), Height( T->Right ))+1;
+    T->Height = Max(Height(T->Left), Height(T->Right))+1;
     return  T;
 }
-
+/*左边的旋转*/ //LL
 static Position
 SingleRotateWithLeft( Position K2 )
 {
@@ -84,7 +85,38 @@ SingleRotateWithLeft( Position K2 )
     K1->Height = Max(Height(K1->Left), K2->Height)+1;
     return K1;
 }
-
+/*右边的旋转*/ //RR
+static Position
+SingleRotateWithRight( Position K1 )
+{
+    Position K2;
+    
+    K2 = K1->Right;
+    K1->Right  = K2->Left;
+    K2->Left   = K1;
+    K1->Height = Max( Height(K1->Left), Height(K1->Right) )+1;
+    K2->Height = Max(Height(K2->Right), K1->Height)+1;
+    return K2;
+}
+/*右旋加左旋*/ //LR
+static Position
+DoubleRotateWithLeft( Position K3 )
+{
+    K3->Left = SingleRotateWithRight(K3->Left);
+    return SingleRotateWithLeft( K3 );
+}
+/*左旋加右旋*/ //RL
+static Position
+DoubleRotateWithRight( Position K1)
+{
+    K1->Right = SingleRotateWithLeft(K1->Right);
+    return SingleRotateWithRight( K1 );
+}
+inline static int
+Max(int a, int b)
+{
+    return  a>b? a:b;
+}
 static int
 Height(Position p){
     if ( p == NULL )
