@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #include <sys/times.h>
 #include <unistd.h>
+#include <stdarg.h>
 #include <sys/time.h>
 #include "dynamic_array.h"
 #include "double_list.h"
@@ -78,13 +79,24 @@ void test_case2();
 void test_case3();
 void test_case4();
 void test_case5();
+double test_valist(const char* m,   ...);
 
 int  main(int argc, const char * argv[]) {
     // insert code here...
-    test_case5();
+    test_valist("1234",1,2,3,4);
     return 0;
 }
-
+double test_valist(const char* m,  ...)
+{
+    va_list valist;
+ 
+    va_start(valist,m);
+    
+    int num =  va_arg(valist, int);
+    printf("%d\n",num);
+    va_end(valist);
+    return 0 ;
+}
 void test_case5(void) {
     
     TREE tr;
@@ -221,7 +233,4 @@ void test_case1(void) {
     
     
     dy_array_dealloc(ary);
-    
-    
-
 }

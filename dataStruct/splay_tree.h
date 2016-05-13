@@ -4,7 +4,7 @@
 //
 //  Created by li yajun on 16/5/6.
 //  Copyright © 2016年 li yajun. All rights reserved.
-//
+//  伸展树
 
 #ifndef splay_tree_h
 #define splay_tree_h
