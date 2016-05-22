@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1461392081 source:g:\lyjprojects\datastruct\datastruct\_node.c
+	<assert.h>
+	"_node.h"
+	"mem_allocator.h"
+
+1461392081 g:\lyjprojects\datastruct\datastruct\_node.h
+	<stdio.h>
+	"global_types.h"
+
+1461392081 g:\lyjprojects\datastruct\datastruct\global_types.h
+
+1461392081 g:\lyjprojects\datastruct\datastruct\mem_allocator.h
+	<stdio.h>
+	<stdlib.h>
+
+1461392081 source:g:\lyjprojects\datastruct\datastruct\basic_stack.c
+	"basic_stack.h"
+	<assert.h>
+
+1461392081 g:\lyjprojects\datastruct\datastruct\basic_stack.h
+	<stdio.h>
+	"double_list.h"
+
+1461392081 g:\lyjprojects\datastruct\datastruct\double_list.h
+	<stdio.h>
+	"global_types.h"
+	"_node.h"
+
+1461392081 source:g:\lyjprojects\datastruct\datastruct\big_number.c
+	"big_number.h"
+	"global_types.h"
+	"mem_allocator.h"
+	<assert.h>
+	<string.h>
+
+1461392081 g:\lyjprojects\datastruct\datastruct\big_number.h
+	<stdio.h>
+
+1461392081 source:g:\lyjprojects\datastruct\datastruct\double_list.c
+	<assert.h>
+	"double_list.h"
+	"mem_allocator.h"
+
+1461392081 source:g:\lyjprojects\datastruct\datastruct\dynamic_array.c
+	<assert.h>
+	"dynamic_array.h"
+	"mem_allocator.h"
+
+1459873313 g:\lyjprojects\datastruct\datastruct\dynamic_array.h
+	<stdio.h>
+	"global_types.h"
+
