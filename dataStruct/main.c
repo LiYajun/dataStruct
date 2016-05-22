@@ -27,11 +27,11 @@
 int tmain(void)
 {
     GLFWwindow* window;
-    
+
     // Initialize the library
     if (!glfwInit())
         return -1;
-    
+
     // Create a windowed mode window and its OpenGL context
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window)
@@ -39,22 +39,22 @@ int tmain(void)
         glfwTerminate();
         return -1;
     }
-    
+
     // Make the window's context current
     glfwMakeContextCurrent(window);
-    
+
     // Loop until the user closes the window
     while (!glfwWindowShouldClose(window))
     {
         // Render here
-        
+
         // Swap front and back buffers
         glfwSwapBuffers(window);
-        
+
         // Poll for and process events
         glfwPollEvents();
     }
-    
+
     glfwTerminate();
     return 0;
 }
@@ -83,22 +83,22 @@ double test_valist(const char* m,   ...);
 
 int  main(int argc, const char * argv[]) {
     // insert code here...
-    test_valist("1234",1,2,3,4);
+
     return 0;
 }
 double test_valist(const char* m,  ...)
 {
     va_list valist;
- 
+
     va_start(valist,m);
-    
+
     int num =  va_arg(valist, int);
     printf("%d\n",num);
     va_end(valist);
     return 0 ;
 }
 void test_case5(void) {
-    
+
     TREE tr;
     tr = NULL;
     tr = insert_value(tr, 6);
@@ -107,20 +107,20 @@ void test_case5(void) {
     tr = insert_value(tr, 3);
     tr = insert_value(tr, 1);
     tr = insert_value(tr, 2);
-    
+
     tr = find_value(tr, 2);
-    
+
     printf("%d\n", tr->rchild->lchild->element);
 
 }
 
 void test_case4(void) {
-    
+
     AvlTree root = NULL;
     long count = 1000000;
     clock_t start,end;
     double duration;
-    
+
     start = clock();
     for (int i= 0; i<count; i++) {
         root = Insert(i, root);
@@ -128,12 +128,12 @@ void test_case4(void) {
     end = clock();
     duration = (double)(end - start)  / CLOCKS_PER_SEC;
     printf("duration = %f seconds\n",duration);
-    
+
 }
 
 void test_case3(void) {
     basic_stack_p stack = basic_stack_alloc(&object_free);
-    
+
     for(int i=0; i<100; i++) {
         int * t = malloc(sizeof(int));
         *t = i;
@@ -148,13 +148,13 @@ void test_case3(void) {
 }
 
 void test_case2(void) {
-    
+
     clock_t start,end;
     double duration;
     long count = 1000000;
     d_node_p pos = NULL;
     double_list_p list =  double_list_alloc(object_free);
-    
+
     start = clock();
     for(int i=0; i<count; i++)
     {
@@ -168,8 +168,8 @@ void test_case2(void) {
     end = clock();
     duration = (double)(end - start)  / CLOCKS_PER_SEC;
     printf("duration = %f seconds\n",duration);
-    
-    
+
+
     d_node_p find_node = double_list_find(list, &object_find);
     int * test = malloc(sizeof(int));
     *test = 999;
@@ -177,34 +177,34 @@ void test_case2(void) {
     int * test2= malloc(sizeof(int));
     *test2 = 1999;
     double_list_insert_pre(list, find_node, test2);
- 
-    
+
+
     for(pos = double_list_first_node(list); pos != NULL; pos = d_node_get_next(pos))
     {
         object_p obj = d_node_get_obj(pos);
         printf("%d \n", *(int*)obj);
     }
-    
-   
+
+
     double_list_dealloc(list);
-    
+
 }
 
 
 void test_case1(void) {
-    
+
     long count = 10;
     int i =0;
     int *t = NULL;
     clock_t start,end;
     double duration;
- 
+
     dy_array_p ary = NULL;
     ary = dy_array_alloc( &object_free );
-    
-    
+
+
     start = clock();
-    
+
     for(i=0 ; i<count; i++)
     {
         t = (int*) malloc(sizeof(int)*1);
@@ -216,21 +216,21 @@ void test_case1(void) {
     *t = 34;
     dy_array_insert_at(ary, t, 4);
     dy_array_del_at(ary, 7);
-    
+
     end = clock();
-    
-    
+
+
     duration = (double)(end - start)  / CLOCKS_PER_SEC;
     printf("duration = %f seconds\n",duration);
     printf("%d\n", __INT_MAX__);
-    
+
     count = dy_array_object_count(ary);
     for(i=0 ; i<count; i++)
     {
         int * p = dy_array_object_at(ary,  i);
         printf("object = %d\n", *p);
     }
-    
-    
+
+
     dy_array_dealloc(ary);
 }

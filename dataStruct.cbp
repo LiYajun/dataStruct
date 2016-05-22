@@ -35,6 +35,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="dataStruct/_node.h" />
+		<Unit filename="dataStruct/avl_btree.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dataStruct/avl_btree.h" />
+		<Unit filename="dataStruct/basic_queue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dataStruct/basic_queue.h" />
 		<Unit filename="dataStruct/basic_stack.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -43,6 +51,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="dataStruct/big_number.h" />
+		<Unit filename="dataStruct/binary_tree.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dataStruct/binary_tree.h" />
 		<Unit filename="dataStruct/double_list.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -59,6 +71,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="dataStruct/mem_allocator.h" />
+		<Unit filename="dataStruct/splay_tree.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dataStruct/splay_tree.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
